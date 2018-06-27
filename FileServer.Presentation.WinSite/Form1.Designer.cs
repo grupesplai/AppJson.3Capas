@@ -146,7 +146,7 @@
             this.label5.Size = new System.Drawing.Size(85, 13);
             this.label5.TabIndex = 10;
             this.label5.Text = "Configuración";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
+           // this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // comboBox1
             // 
@@ -155,7 +155,7 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 12;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
+            //this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // Form1
             // 

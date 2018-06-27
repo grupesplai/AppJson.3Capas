@@ -2,7 +2,7 @@
 namespace FileServer.Infrastructure.Repository_DAO_
 
 {
-    public interface IALumnoRepository
+    public interface IAlumnoRepository
     {
         Alumno Registrar(Alumno alum, string path);
     }

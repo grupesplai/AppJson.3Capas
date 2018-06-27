@@ -3,15 +3,13 @@ using FileServer.Common.Model;
 using FileServer.Infrastructure.Repository_DAO_;
 using System.Data;
 using System.Collections.Generic;
-using System.IO;
-using Newtonsoft.Json;
 
 namespace FileServer.Infrastructure.Repository_DAO_.Tests
 {
     [TestClass()]
     public class AlumnoRepositoryTests
     {
-        //IALumnoRepository alumnoRepository = new AlumnoRepository();
+        //IAlumnoRepository alumnoRepository = new AlumnoRepository();
         Alumno alumno = new Alumno
         {
             Id = 1,

@@ -33,15 +33,15 @@ namespace FileServer.Presentation.WinSite
                     //se ha importado system.configuration y se ha referenciado a su respectiva dll...
                     break;
                 case 1:
-                    var startInfo = new ProcessStartInfo();
-                    var defaultPath = startInfo.Environment["PATH"];
-                    var newPath = "C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.16299.0\\x86" + ";" + defaultPath;
-                    startInfo.FileName = "cmd.exe";
-                    startInfo.Arguments = "/c set > D:\\env.txt";
-                    startInfo.Verb = "runas";
-                    startInfo.Environment["PATH"] = newPath;
-                    startInfo.UseShellExecute = false; // required to use Environment variables
-                    Process.Start(startInfo);
+                    //var startInfo = new ProcessStartInfo();
+                    //var defaultPath = startInfo.Environment["PATH"];
+                    //var newPath = "C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.16299.0\\x86" + ";" + defaultPath;
+                    //startInfo.FileName = "cmd.exe";
+                    //startInfo.Arguments = "/c set > D:\\env.txt";
+                    //startInfo.Verb = "runas";
+                    //startInfo.Environment["PATH"] = newPath;
+                    //startInfo.UseShellExecute = false; // required to use Environment variables
+                    //Process.Start(startInfo);
                     break;
             }
 
@@ -63,21 +63,11 @@ namespace FileServer.Presentation.WinSite
             timer1.Enabled = true;
         }
 
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void Form1_Load(object sender, EventArgs e)
         {
             comboBox1.Items.Add("App.config");
             comboBox1.Items.Add("Variable de entorno");
             comboBox1.SelectedIndex = 0;
-        }
-
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }
