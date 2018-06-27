@@ -4,6 +4,8 @@ using System.Windows.Forms;
 using FileServer.Common.Model;
 using FileServer.Infrastructure.Repository_DAO_;
 using System.Configuration.Assemblies;
+using System.Diagnostics;
+
 namespace FileServer.Presentation.WinSite
 {
     public partial class Form1 : Form
@@ -23,7 +25,7 @@ namespace FileServer.Presentation.WinSite
             alum.Apellidos = txtapellidos.Text;
             alum.DNI = txtdni.Text;
             string path = "";
-            
+
             switch (comboBox1.SelectedIndex)
             {
                 case 0:
@@ -31,9 +33,18 @@ namespace FileServer.Presentation.WinSite
                     //se ha importado system.configuration y se ha referenciado a su respectiva dll...
                     break;
                 case 1:
+                    var startInfo = new ProcessStartInfo();
+                    var defaultPath = startInfo.Environment["PATH"];
+                    var newPath = "C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.16299.0\\x86" + ";" + defaultPath;
+                    startInfo.FileName = "cmd.exe";
+                    startInfo.Arguments = "/c set > D:\\env.txt";
+                    startInfo.Verb = "runas";
+                    startInfo.Environment["PATH"] = newPath;
+                    startInfo.UseShellExecute = false; // required to use Environment variables
+                    Process.Start(startInfo);
                     break;
             }
-            
+
             Console.WriteLine(string.Format(@"ID: {0}, Nombre: {1}, Apellidos: {2}, DNI: {3}", alum.Id
                 , alum.Nombre, alum.Apellidos, alum.DNI));
             AlumnoRepositorio.Registrar(alum, path);
