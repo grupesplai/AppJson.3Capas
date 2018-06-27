@@ -3,7 +3,6 @@ using System.Linq;
 using System.Windows.Forms;
 using FileServer.Common.Model;
 using FileServer.Infrastructure.Repository_DAO_;
-
 namespace FileServer.Presentation.WinSite
 {
     public partial class Form1 : Form
@@ -38,6 +37,23 @@ namespace FileServer.Presentation.WinSite
             timer1.Stop();
             txtmensaje.Hide();
             timer1.Enabled = true;
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            comboBox1.Items.Add("App.config");
+            comboBox1.Items.Add("Variable de entorno");
+            comboBox1.SelectedIndex = 0;
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
