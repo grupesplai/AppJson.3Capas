@@ -9,7 +9,7 @@ namespace FileServer.Infrastructure.Repository_DAO_
     public class AlumnoRepository : IALumnoRepository
     {
        // public static string path = @".\alumnosJson.json";
-        public Alumno Registrar(Alumno alum)
+        public Alumno Registrar(Alumno alum, string path)
         {
             try
             {

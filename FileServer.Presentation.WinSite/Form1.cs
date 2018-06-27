@@ -3,6 +3,7 @@ using System.Linq;
 using System.Windows.Forms;
 using FileServer.Common.Model;
 using FileServer.Infrastructure.Repository_DAO_;
+using System.Configuration.Assemblies;
 namespace FileServer.Presentation.WinSite
 {
     public partial class Form1 : Form
@@ -21,9 +22,21 @@ namespace FileServer.Presentation.WinSite
             alum.Nombre = txtnombre.Text;
             alum.Apellidos = txtapellidos.Text;
             alum.DNI = txtdni.Text;
+            string path = "";
+            
+            switch (comboBox1.SelectedIndex)
+            {
+                case 0:
+                    path = ConfigurationManager.AppSettings["path"];
+                    //se ha importado system.configuration y se ha referenciado a su respectiva dll...
+                    break;
+                case 1:
+                    break;
+            }
+            
             Console.WriteLine(string.Format(@"ID: {0}, Nombre: {1}, Apellidos: {2}, DNI: {3}", alum.Id
                 , alum.Nombre, alum.Apellidos, alum.DNI));
-            AlumnoRepositorio.Registrar(alum);
+            AlumnoRepositorio.Registrar(alum, path);
             //pendiente de implementar para que SOLO salga en caso de registrarlo correctamente, de momento se muestra siempre
             txtmensaje.Text = "Alumno registrado correctamente.";
             foreach (TextBox tb in this.Controls.OfType<TextBox>().ToArray())
