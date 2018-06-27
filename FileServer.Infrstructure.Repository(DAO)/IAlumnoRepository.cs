@@ -1,5 +1,5 @@
 ﻿using FileServer.Common.Model;
-namespace FileServer.Infrstructure.Repository_DAO_
+namespace FileServer.Infrastructure.Repository_DAO_
 
 {
     public interface IALumnoRepository

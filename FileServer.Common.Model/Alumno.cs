@@ -46,5 +46,5 @@ namespace FileServer.Common.Model
             return "id " + Id + "nombre: " + Nombre + "apellidos: " + Apellidos + "dni: " + DNI;
         }
     }
-    //ademas tiene que existir un metodo ToJson(), convertir el objeto en json y devolviendo
+    //ademas tiene que existir un metodo ToJson(), convertir el objeto en json y devolviendo el json
 }

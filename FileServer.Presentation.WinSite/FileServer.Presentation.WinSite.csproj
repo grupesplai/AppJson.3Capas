@@ -83,9 +83,9 @@
       <Project>{97190b88-183f-480d-b989-a2e8dce5e1a5}</Project>
       <Name>FileServer.Common.Model</Name>
     </ProjectReference>
-    <ProjectReference Include="..\FileServer.Infrstructure.Repository%28DAO%29\FileServer.Infrstructure.Repository%28DAO%29.csproj">
+    <ProjectReference Include="..\FileServer.Infrstructure.Repository%28DAO%29\FileServer.Infrastructure.Repository%28DAO%29.csproj">
       <Project>{4240ddf1-0d4e-4bc6-9614-ec88aa0cced1}</Project>
-      <Name>FileServer.Infrstructure.Repository%28DAO%29</Name>
+      <Name>FileServer.Infrastructure.Repository%28DAO%29</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

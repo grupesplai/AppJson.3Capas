@@ -4,12 +4,12 @@ using Newtonsoft.Json;
 using System.IO;
 using FileServer.Common.Model;
 
-namespace FileServer.Infrstructure.Repository_DAO_
+namespace FileServer.Infrastructure.Repository_DAO_
 {
     public class AlumnoRepository : IALumnoRepository
     {
         public static string path = @".\alumnosJson.json";
-        public Common.Model.Alumno Registrar(Common.Model.Alumno alum)
+        public Alumno Registrar(Alumno alum)
         {
             try
             {
