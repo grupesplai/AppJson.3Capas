@@ -3,8 +3,11 @@ using System.Linq;
 using System.Windows.Forms;
 using FileServer.Common.Model;
 using FileServer.Infrastructure.Repository_DAO_;
+using Newtonsoft.Json;
 using System.Configuration.Assemblies;
 using System.Diagnostics;
+using System.Collections.Generic;
+using System.IO;
 
 namespace FileServer.Presentation.WinSite
 {
@@ -33,15 +36,8 @@ namespace FileServer.Presentation.WinSite
                     //se ha importado system.configuration y se ha referenciado a su respectiva dll...
                     break;
                 case 1:
-                    //var startInfo = new ProcessStartInfo();
-                    //var defaultPath = startInfo.Environment["PATH"];
-                    //var newPath = "C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.16299.0\\x86" + ";" + defaultPath;
-                    //startInfo.FileName = "cmd.exe";
-                    //startInfo.Arguments = "/c set > D:\\env.txt";
-                    //startInfo.Verb = "runas";
-                    //startInfo.Environment["PATH"] = newPath;
-                    //startInfo.UseShellExecute = false; // required to use Environment variables
-                    //Process.Start(startInfo);
+                    //path = Environment.GetEnvironmentVariable("Vueling_JSON");
+                    path = Environment.ExpandEnvironmentVariables(@"Vueling_JSON.\alumnosJson-EnviromentVariable");
                     break;
             }
 
@@ -49,7 +45,7 @@ namespace FileServer.Presentation.WinSite
                 , alum.Nombre, alum.Apellidos, alum.DNI));
             AlumnoRepositorio.Registrar(alum, path);
             //pendiente de implementar para que SOLO salga en caso de registrarlo correctamente, de momento se muestra siempre
-            txtmensaje.Text = "Alumno registrado correctamente.";
+
             foreach (TextBox tb in this.Controls.OfType<TextBox>().ToArray())
                 tb.Clear();
 
