@@ -2,8 +2,8 @@
 using System.Linq;
 using System.Windows.Forms;
 using FileServer.Common.Model;
+using System.Configuration;
 using FileServer.Infrastructure.Repository_DAO_;
-using Newtonsoft.Json;
 using System.Configuration.Assemblies;
 using System.Diagnostics;
 using System.Collections.Generic;
@@ -18,7 +18,7 @@ namespace FileServer.Presentation.WinSite
             InitializeComponent();
         }
 
-        private void btnreg_Click(object sender, EventArgs e)
+        public void btnreg_Click(object sender, EventArgs e)
         {
             Alumno alum = new Alumno();
             AlumnoRepository AlumnoRepositorio = new AlumnoRepository();
@@ -33,17 +33,18 @@ namespace FileServer.Presentation.WinSite
             {
                 case 0:
                     path = ConfigurationManager.AppSettings["path"];
-                    //se ha importado system.configuration y se ha referenciado a su respectiva dll...
                     break;
                 case 1:
-                    //path = Environment.GetEnvironmentVariable("Vueling_JSON");
-                    path = Environment.ExpandEnvironmentVariables(@"Vueling_JSON.\alumnosJson-EnviromentVariable");
+                    string fileName = ConfigurationManager.AppSettings["pathEnVa"];
+                    if (Environment.GetEnvironmentVariable("Vueling_JSON") == null)
+                        Environment.SetEnvironmentVariable(ConfigurationManager.AppSettings["allPath"], fileName);
+
+                    path = fileName;
                     break;
             }
-
             Console.WriteLine(string.Format(@"ID: {0}, Nombre: {1}, Apellidos: {2}, DNI: {3}", alum.Id
                 , alum.Nombre, alum.Apellidos, alum.DNI));
-            AlumnoRepositorio.Registrar(alum, path);
+            AlumnoRepositorio.Add(alum, path);
             //pendiente de implementar para que SOLO salga en caso de registrarlo correctamente, de momento se muestra siempre
 
             foreach (TextBox tb in this.Controls.OfType<TextBox>().ToArray())

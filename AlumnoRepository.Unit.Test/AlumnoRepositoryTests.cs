@@ -13,6 +13,7 @@ namespace FileServer.Infrastructure.Repository_DAO_.Tests
     {
         private IAlumnoRepository mockObject;
         Alumno alumno = new Alumno();
+        Alumno alumnoFound;
         string path = ConfigurationManager.AppSettings["path"];
 
         [TestInitialize]
@@ -24,19 +25,21 @@ namespace FileServer.Infrastructure.Repository_DAO_.Tests
             alumno.Apellidos = "aaaa";
             alumno.DNI = "aaaa";
 
-            mock.Setup(x => x.Registrar(alumno, path)).Returns(alumno);
-            mockObject = mock.Object; //Recupera el objeto mockado, con toda la configuracion realizada.
+            mock.Setup(x => x.Add(alumnoFound, path)).Returns(alumno);
+            //Recupera el objeto mockado, con toda la configuracion realizada.
+            mockObject = mock.Object;
         }
         [TestMethod()]
         public void RegistrarTest()
         {
             
             List<Alumno> listaAlumnos = JsonConvert.DeserializeObject<List<Alumno>>(File.ReadAllText(path));
-
+            // de la lista buscamos el objeto alumno
             Alumno matchAlumno = listaAlumnos.Find(o => o.Equals(alumno));
-            mockObject.Registrar(matchAlumno, path);
+            //mock al abjeto "encontrado"
+            alumnoFound = mockObject.Add(matchAlumno, path);
 
-            Assert.AreEqual(matchAlumno, alumno);
+            Assert.AreEqual(alumnoFound, alumno);
         }
     }
 }

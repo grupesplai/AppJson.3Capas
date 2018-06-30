@@ -3,17 +3,19 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 using System.IO;
 using FileServer.Common.Model;
+using System.Configuration;
 
 namespace FileServer.Infrastructure.Repository_DAO_
 {
     public class AlumnoRepository : IAlumnoRepository
     {
       
-        public Alumno Registrar(Alumno alum, string path)
+        public Alumno Add(Alumno alum,string path)
         {
             try
             {
                 List<Alumno> listaAlumno;
+                //string path = getPath();
 
                 if (File.Exists(path))
                 {
@@ -25,10 +27,7 @@ namespace FileServer.Infrastructure.Repository_DAO_
                     listaAlumno.Add(alum);
                 }
                 else
-                {
-                    listaAlumno = new List<Alumno>();
-                    listaAlumno.Add(alum);
-                }
+                    listaAlumno = new List<Alumno>  { alum };
 
                 string alumJson = JsonConvert.SerializeObject(listaAlumno, Formatting.Indented);
                 using (StreamWriter sw = File.CreateText(path))
@@ -41,5 +40,11 @@ namespace FileServer.Infrastructure.Repository_DAO_
             }
             return alum;
         }
+
+        //public string getPath()
+        //{
+            
+        //    return path;
+        //}
     }
 }
