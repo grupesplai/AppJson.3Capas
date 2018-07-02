@@ -4,10 +4,7 @@ using System.Windows.Forms;
 using FileServer.Common.Model;
 using System.Configuration;
 using FileServer.Infrastructure.Repository_DAO_;
-using System.Configuration.Assemblies;
-using System.Diagnostics;
-using System.Collections.Generic;
-using System.IO;
+
 
 namespace FileServer.Presentation.WinSite
 {
@@ -35,11 +32,10 @@ namespace FileServer.Presentation.WinSite
                     path = ConfigurationManager.AppSettings["path"];
                     break;
                 case 1:
-                    string fileName = ConfigurationManager.AppSettings["pathEnVa"];
                     if (Environment.GetEnvironmentVariable("Vueling_JSON") == null)
-                        Environment.SetEnvironmentVariable(ConfigurationManager.AppSettings["allPath"], fileName);
+                        Environment.SetEnvironmentVariable("Vueling_JSON", ConfigurationManager.AppSettings["pathEnVa"]);
 
-                    path = fileName;
+                    path = Environment.GetEnvironmentVariable("Vueling_JSON");
                     break;
             }
             Console.WriteLine(string.Format(@"ID: {0}, Nombre: {1}, Apellidos: {2}, DNI: {3}", alum.Id
