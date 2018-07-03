@@ -35,11 +35,11 @@ namespace FileServer.Presentation.WinSite
                     if (Environment.GetEnvironmentVariable("Vueling_JSON") == null)
                         Environment.SetEnvironmentVariable("Vueling_JSON", ConfigurationManager.AppSettings["pathEnVa"]);
 
-                    path = Environment.GetEnvironmentVariable("Vueling_JSON");
+                    path = string.Concat(Environment.GetEnvironmentVariable("Vueling_JSON"), "\\alumnosJson-EnviVar.json");
                     break;
             }
-            Console.WriteLine(string.Format(@"ID: {0}, Nombre: {1}, Apellidos: {2}, DNI: {3}", alum.Id
-                , alum.Nombre, alum.Apellidos, alum.DNI));
+            
+
             AlumnoRepositorio.Add(alum, path);
             //pendiente de implementar para que SOLO salga en caso de registrarlo correctamente, de momento se muestra siempre
 

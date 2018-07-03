@@ -17,15 +17,13 @@ namespace FileServer.Infrastructure.Repository_DAO_.Tests
             Apellidos = "bbbb",
             DNI = "cccc"
         };
-
-
-        List<Alumno> alumnoTest = new List<Alumno>();
-        //alumnoTest.add(alumno);
-        [DataRow(3)]
+        static List<Alumno> alumnoTest = new List<Alumno>();
+        [DataRow(alumnoTest.Add(alumno))]
 
         [TestMethod()]
         public void RegistrarTest(Alumno alumno)
         {
+
            // Assert.IsTrue(alumno.Equals(...));
         }
         
