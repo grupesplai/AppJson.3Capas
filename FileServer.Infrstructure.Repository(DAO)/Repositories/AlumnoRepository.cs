@@ -42,9 +42,7 @@ namespace FileServer.Infrastructure.Repository_DAO_
             }
             catch (JsonException e)
             {
-                Console.WriteLine("Ha ocurrido un problema con el fichero.");
-                Console.WriteLine(e.Message);
-                log.Error("There is exist a problem with json format.");
+                log.Error("There is exist a problem with json format." + e.Message);
                 throw e;
             }
             return alum;

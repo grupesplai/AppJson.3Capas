@@ -47,6 +47,11 @@ namespace FileServer.Presentation.WinSite
             comboBox1.Items.Add("App.config");
             comboBox1.Items.Add("Variable de entorno");
             comboBox1.SelectedIndex = 0;
+
+            comboBox2.Items.Add(".json");
+            comboBox2.Items.Add(".xml");
+            comboBox2.Items.Add(".txt");
+            comboBox2.SelectedIndex = 0;
         }
     }
 }
