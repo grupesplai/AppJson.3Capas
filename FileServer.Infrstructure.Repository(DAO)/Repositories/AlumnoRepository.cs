@@ -5,22 +5,27 @@ using System.IO;
 using System.Linq;
 using FileServer.Common.Model;
 using System.Configuration;
+using log4net;
+using System.Reflection;
 
 namespace FileServer.Infrastructure.Repository_DAO_
 {
     public class AlumnoRepository : IAlumnoRepository
     {
-      
-        public Alumno Add(Alumno alum,string path)
+        private static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+
+        public Alumno Add(Alumno alum, string path)
         {
+            StreamReader sr = null;
             try
             {
+                log.Info("Clase alumno añade el alumno al json");
                 List<Alumno> listaAlumno;
                 //string path = getPath();
 
                 if (File.Exists(path))
                 {
-                    using (StreamReader sr = new StreamReader(path))
+                    using (sr = new StreamReader(path))
                     {
                         string read = sr.ReadToEnd();
                         listaAlumno = JsonConvert.DeserializeObject<List<Alumno>>(read);
@@ -28,22 +33,10 @@ namespace FileServer.Infrastructure.Repository_DAO_
                     listaAlumno.Add(alum);
                 }
                 else
-                    listaAlumno = new List<Alumno>  { alum };
+                    listaAlumno = new List<Alumno> { alum };
 
-                Alumno alumno = new Alumno();
-                    alumno.Id = 1;
-                    alumno.Nombre = "aaaa";
-                    alumno.Apellidos = "aaaa";
-                    alumno.DNI = "aaaa";
-                    
                 string alumJson = JsonConvert.SerializeObject(listaAlumno, Formatting.Indented);
-
-                List<Alumno> listaAlumnos = JsonConvert.DeserializeObject<List<Alumno>>(File.ReadAllText(path));
-                
-                var matchedObject = from a in listaAlumnos
-                                    where a.Equals(alumno)
-                                    select a;
-                Console.WriteLine(matchedObject.ToString());
+                //List<Alumno> listaAlumnos = JsonConvert.DeserializeObject<List<Alumno>>(File.ReadAllText(path));
                 using (StreamWriter sw = File.CreateText(path))
                     sw.WriteLine(alumJson);
             }
@@ -51,6 +44,8 @@ namespace FileServer.Infrastructure.Repository_DAO_
             {
                 Console.WriteLine("Ha ocurrido un problema con el fichero.");
                 Console.WriteLine(e.Message);
+                log.Error("There is exist a problem with json format.");
+                throw e;
             }
             return alum;
         }

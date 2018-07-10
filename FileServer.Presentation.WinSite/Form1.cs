@@ -2,9 +2,8 @@
 using System.Linq;
 using System.Windows.Forms;
 using FileServer.Common.Model;
-using System.Configuration;
 using FileServer.Infrastructure.Repository_DAO_;
-
+using FileServer.Infrstructure.Repository_DAO_;
 
 namespace FileServer.Presentation.WinSite
 {
@@ -17,32 +16,19 @@ namespace FileServer.Presentation.WinSite
 
         public void btnreg_Click(object sender, EventArgs e)
         {
-            Alumno alum = new Alumno();
-            AlumnoRepository AlumnoRepositorio = new AlumnoRepository();
-
-            alum.Id = Convert.ToInt32(txtid.Text);
-            alum.Nombre = txtnombre.Text;
-            alum.Apellidos = txtapellidos.Text;
-            alum.DNI = txtdni.Text;
-            string path = "";
-
-            switch (comboBox1.SelectedIndex)
-            {
-                case 0:
-                    path = ConfigurationManager.AppSettings["path"];
-                    break;
-                case 1:
-                    if (Environment.GetEnvironmentVariable("Vueling_JSON") == null)
-                        Environment.SetEnvironmentVariable("Vueling_JSON", ConfigurationManager.AppSettings["pathEnVa"]);
-
-                    path = string.Concat(Environment.GetEnvironmentVariable("Vueling_JSON"), "\\alumnosJson-EnviVar.json");
-                    break;
-            }
             
-
-            AlumnoRepositorio.Add(alum, path);
-            //pendiente de implementar para que SOLO salga en caso de registrarlo correctamente, de momento se muestra siempre
-
+            AlumnoRepository AlumnoRepositorio = new AlumnoRepository();
+            if (!(int.TryParse(txtid.Text, out int id)))
+            {
+                MessageBox.Show("Debe introducir dato tipo numerico" + id);
+            }
+            else
+            {
+                Alumno alum = new Alumno(Convert.ToInt32(txtid.Text), txtnombre.Text, txtapellidos.Text,
+                txtdni.Text);
+                AlumnoRepositorio.Add(alum, FileManager.FilePath(comboBox1.SelectedIndex));
+                //pendiente de implementar para que SOLO salga en caso de registrarlo correctamente, de momento se muestra siempre
+            }
             foreach (TextBox tb in this.Controls.OfType<TextBox>().ToArray())
                 tb.Clear();
 

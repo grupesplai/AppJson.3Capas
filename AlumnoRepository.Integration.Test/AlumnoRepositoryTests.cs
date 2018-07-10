@@ -1,31 +1,31 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using FileServer.Common.Model;
-using FileServer.Infrastructure.Repository_DAO_;
-using System.Data;
-using System.Collections.Generic;
+﻿//using Microsoft.VisualStudio.TestTools.UnitTesting;
+//using FileServer.Common.Model;
+//using FileServer.Infrastructure.Repository_DAO_;
+//using System.Data;
+//using System.Collections.Generic;
 
-namespace FileServer.Infrastructure.Repository_DAO_.Tests
-{
-    [TestClass()]
-    public class AlumnoRepositoryTests
-    {
-        //IAlumnoRepository alumnoRepository = new AlumnoRepository();
-        Alumno alumno = new Alumno
-        {
-            Id = 1,
-            Nombre = "aaaa",
-            Apellidos = "bbbb",
-            DNI = "cccc"
-        };
-        static List<Alumno> alumnoTest = new List<Alumno>();
-        [DataRow(alumnoTest.Add(alumno))]
+//namespace FileServer.Infrastructure.Repository_DAO_.Tests
+//{
+//    [TestClass()]
+//    public class AlumnoRepositoryTests
+//    {
+//        //IAlumnoRepository alumnoRepository = new AlumnoRepository();
+//        Alumno alumno = new Alumno
+//        {
+//            Id = 1,
+//            Nombre = "aaaa",
+//            Apellidos = "bbbb",
+//            DNI = "cccc"
+//        };
 
-        [TestMethod()]
-        public void RegistrarTest(Alumno alumno)
-        {
+//        [DataRow(alumnoTest.Add(alumno))]
 
-           // Assert.IsTrue(alumno.Equals(...));
-        }
+//        [TestMethod()]
+//        public void RegistrarTest(Alumno alumno)
+//        {
+
+//           // Assert.IsTrue(alumno.Equals(...));
+//        }
         
-    }
-}
+//    }
+//}
