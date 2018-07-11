@@ -16,8 +16,6 @@ namespace FileServer.Presentation.WinSite
         public Form1()
         {
             InitializeComponent();
-            comboBox1.SelectedIndex = 0;
-            comboBox2.SelectedIndex = 0;
         }
 
         public void btnreg_Click(object sender, EventArgs e)
@@ -67,6 +65,8 @@ namespace FileServer.Presentation.WinSite
             comboBox2.Items.Add(".json");
             comboBox2.Items.Add(".xml");
             comboBox2.Items.Add(".txt");
+            comboBox1.SelectedIndex = 0;
+            comboBox2.SelectedIndex = 0;
         }
     }
 }
