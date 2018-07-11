@@ -26,7 +26,7 @@ namespace FileServer.Presentation.WinSite
             {
                 Alumno alum = new Alumno(Convert.ToInt32(txtid.Text), txtnombre.Text, txtapellidos.Text,
                 txtdni.Text);
-                AlumnoRepositorio.Add(alum, FileManager.FilePath(comboBox1.SelectedIndex));
+                AlumnoRepositorio.Add(alum, FileManager.FilePath(comboBox1.SelectedIndex, comboBox2.SelectedIndex));
                 //pendiente de implementar para que SOLO salga en caso de registrarlo correctamente, de momento se muestra siempre
             }
             foreach (TextBox tb in this.Controls.OfType<TextBox>().ToArray())

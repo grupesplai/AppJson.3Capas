@@ -10,27 +10,45 @@ namespace FileServer.Infrstructure.Repository_DAO_
     public class FileManager
     {
         private static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
-        public static string FilePath(int i)
+        public static string FilePath(int enviroment, int extension)
         {
             string path = "";
-            switch (i)
+            switch (enviroment)
             {
                 case 0:
-                    log.Info("Elección del usuario: 'App.config'");
-                    path = ConfigurationManager.AppSettings["path"];
+                    path = ConfigurationManager.AppSettings["fileName"]+GetExtesion(extension);
                     break;
                 case 1:
-                    log.Info("Elección del usuario: 'Variable de Entorno'");
-                    if (Environment.GetEnvironmentVariable("VUELING_HOME") == null)
-                        Environment.SetEnvironmentVariable("VUELING_HOME", ConfigurationManager.AppSettings["pathEnVa"]);
+                    //if (Environment.GetEnvironmentVariable("VUELING_HOME") == null)
+                    //    Environment.SetEnvironmentVariable("VUELING_HOME", ConfigurationManager.AppSettings["pathEnVa"]);
 
-                    string pathEnv = Environment.GetEnvironmentVariable("VUELING_HOME");
-                    path = string.Concat(pathEnv, "\\alumnosJson-EV.json");
+                    string pathEnv = Environment.GetEnvironmentVariable(ConfigurationManager.AppSettings["enviroment"]);
+                    path = string.Concat(pathEnv, string.Concat(ConfigurationManager.AppSettings["fileName"], GetExtesion(extension)));
                     break;
             }
+            log.Info("Elección del usuario: '"+enviroment+"'");
             return path;
         }
         //falta variable statica FILEPATH para te traiga el path completo. así NO
         //romper con DRY (dont repeat yoursef)
+
+        public static string GetExtesion(int extension)
+        {
+            string extensionSelected = "";
+            switch (extension)
+            {
+                case 0:
+                    extensionSelected = ConfigurationManager.AppSettings["json"];
+                    break;
+                case 1:
+                    extensionSelected = ConfigurationManager.AppSettings["xml"];
+                    break;
+                case 3:
+                    extensionSelected = ConfigurationManager.AppSettings["txt"];
+                    break;
+            }
+            log.Info("Extensión elegida por usuario: '"+extensionSelected+"'");
+            return extensionSelected;
+        }
     }
 }
