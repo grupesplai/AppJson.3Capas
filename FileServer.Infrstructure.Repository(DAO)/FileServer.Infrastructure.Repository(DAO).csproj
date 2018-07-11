@@ -64,6 +64,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Manager\ExceptionManager.cs" />
     <Compile Include="Manager\FileManager.cs" />
     <Compile Include="Repositories\AlumnoRepository.cs" />
     <Compile Include="Interfaces\IAlumnoRepository.cs" />

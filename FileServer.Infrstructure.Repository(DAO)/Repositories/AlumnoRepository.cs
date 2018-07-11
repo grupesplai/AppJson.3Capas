@@ -7,34 +7,27 @@ using FileServer.Common.Model;
 using System.Configuration;
 using log4net;
 using System.Reflection;
+using FileServer.Infrstructure.Repository_DAO_.Manager;
+using FileServer.Infrstructure.Repository_DAO_;
 
 namespace FileServer.Infrastructure.Repository_DAO_
 {
     public class AlumnoRepository : IAlumnoRepository
     {
         private static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
-
-        public Alumno Add(Alumno alum, string path)
+        public AlumnoRepository()
         {
-            StreamReader sr = null;
+            log4net.Config.XmlConfigurator.Configure();
+        }
+        public Alumno Add(Alumno alumno, string path)
+        {
+            log.Debug("Alumno a añadir: " + alumno.ToString());
+            log.Debug("Con ruta: " + path);
+            
             try
             {
-                log.Info("Clase alumno añade el alumno al json");
-                List<Alumno> listaAlumno;
-                //string path = getPath();
-
-                if (File.Exists(path))
-                {
-                    using (sr = new StreamReader(path))
-                    {
-                        string read = sr.ReadToEnd();
-                        listaAlumno = JsonConvert.DeserializeObject<List<Alumno>>(read);
-                    }
-                    listaAlumno.Add(alum);
-                }
-                else
-                    listaAlumno = new List<Alumno> { alum };
-
+                log.Debug("Agregando alumno al fichero con ruta: " + path);
+                List<Alumno>listaAlumno = FileManager.FileExists(alumno, path);
                 string alumJson = JsonConvert.SerializeObject(listaAlumno, Formatting.Indented);
                 //List<Alumno> listaAlumnos = JsonConvert.DeserializeObject<List<Alumno>>(File.ReadAllText(path));
                 using (StreamWriter sw = File.CreateText(path))
@@ -42,10 +35,17 @@ namespace FileServer.Infrastructure.Repository_DAO_
             }
             catch (JsonException e)
             {
-                log.Error("There is exist a problem with json format." + e.Message);
-                throw e;
+                ExceptionManager.ExceptionCaption(e);
             }
-            return alum;
+            catch (PathTooLongException e)
+            {
+                ExceptionManager.ExceptionCaption(e);
+            }
+            catch (DirectoryNotFoundException e)
+            {
+                ExceptionManager.ExceptionCaption(e);
+            }
+            return alumno;
         }
     }
 }

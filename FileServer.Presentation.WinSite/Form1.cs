@@ -1,33 +1,51 @@
 ﻿using System;
 using System.Linq;
+using System.Reflection;
 using System.Windows.Forms;
 using FileServer.Common.Model;
 using FileServer.Infrastructure.Repository_DAO_;
 using FileServer.Infrstructure.Repository_DAO_;
+using log4net;
+using log4net.Config;
 
 namespace FileServer.Presentation.WinSite
 {
     public partial class Form1 : Form
     {
+        private static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
         public Form1()
         {
             InitializeComponent();
+            comboBox1.SelectedIndex = 0;
+            comboBox2.SelectedIndex = 0;
         }
 
         public void btnreg_Click(object sender, EventArgs e)
         {
-            
+            try
+            {
+                int p = 0;
+                var num = 5 / p;
+            }
+            catch (Exception ex)
+            {
+                LogManager.GetLogger("EmailLogger").Error(ex);
+            }
+            log.Debug(string.Format(@"Datos introducidos del alumno --> ID = {0} | Nombre = {1} | Apellidos = {2} | DNI = {3}",
+                      txtid.Text, txtnombre.Text, txtapellidos.Text, txtdni.Text));
             AlumnoRepository AlumnoRepositorio = new AlumnoRepository();
             if (!(int.TryParse(txtid.Text, out int id)))
             {
-                MessageBox.Show("Debe introducir dato tipo numerico" + id);
+                MessageBox.Show(id + "No es un tipo de dato correcto");
             }
             else
-            {
+            {   
                 Alumno alum = new Alumno(Convert.ToInt32(txtid.Text), txtnombre.Text, txtapellidos.Text,
                 txtdni.Text);
-                AlumnoRepositorio.Add(alum, FileManager.FilePath(comboBox1.SelectedIndex, comboBox2.SelectedIndex));
+                var alumnoCreado = AlumnoRepositorio.Add(alum, FileManager.FilePath(comboBox1.SelectedIndex, comboBox2.SelectedIndex));
                 //pendiente de implementar para que SOLO salga en caso de registrarlo correctamente, de momento se muestra siempre
+                FileManager.Validation(alum,alumnoCreado);
+                
             }
             foreach (TextBox tb in this.Controls.OfType<TextBox>().ToArray())
                 tb.Clear();
@@ -46,12 +64,9 @@ namespace FileServer.Presentation.WinSite
         {
             comboBox1.Items.Add("App.config");
             comboBox1.Items.Add("Variable de entorno");
-            comboBox1.SelectedIndex = 0;
-
             comboBox2.Items.Add(".json");
             comboBox2.Items.Add(".xml");
             comboBox2.Items.Add(".txt");
-            comboBox2.SelectedIndex = 0;
         }
     }
 }

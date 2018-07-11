@@ -43,7 +43,7 @@ namespace FileServer.Common.Model
         }
         public override string ToString()//convierte los objetos en string, si no l hay te devuelve la ruta del objeto
         {
-            return "id " + Id + "nombre: " + Nombre + "apellidos: " + Apellidos + "dni: " + DNI;
+            return "Id: " + Id + ", Nombre: " + Nombre + ", Apellidos: " + Apellidos + ", DNI: " + DNI;
         }
     }
     //ademas tiene que existir un metodo ToJson(), convertir el objeto en json y devolviendo el json
