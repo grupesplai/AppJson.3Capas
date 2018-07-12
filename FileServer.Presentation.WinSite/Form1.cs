@@ -6,7 +6,7 @@ using FileServer.Common.Model;
 using FileServer.Infrastructure.Repository_DAO_;
 using FileServer.Infrstructure.Repository_DAO_;
 using log4net;
-using log4net.Config;
+using System.Diagnostics;
 
 namespace FileServer.Presentation.WinSite
 {
@@ -60,6 +60,8 @@ namespace FileServer.Presentation.WinSite
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            string cmdText = @"C:\Users\G1\source\repos\FileServer\ScripVariableEntorno.ps1";
+            Process.Start(@"C:\windows\system32\windowspowershell\v1.0\powershell.exe ", cmdText);
             comboBox1.Items.Add("App.config");
             comboBox1.Items.Add("Variable de entorno");
             comboBox2.Items.Add(".json");

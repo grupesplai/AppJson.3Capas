@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlumnoRepository.Integratio
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlumnoRepository.Unit.Test", "AlumnoRepository.Unit.Test\AlumnoRepository.Unit.Test.csproj", "{CD814A4A-6E01-4A4B-971D-1498C0A6148C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentRepository.Behavior.Tests", "FileServer.Infrastructure.Repository(DAO).Behavior.Tests\StudentRepository.Behavior.Tests.csproj", "{BF364CD9-1DE6-40A1-A43D-E0F1780B2C99}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,10 @@ Global
 		{CD814A4A-6E01-4A4B-971D-1498C0A6148C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CD814A4A-6E01-4A4B-971D-1498C0A6148C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CD814A4A-6E01-4A4B-971D-1498C0A6148C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF364CD9-1DE6-40A1-A43D-E0F1780B2C99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF364CD9-1DE6-40A1-A43D-E0F1780B2C99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF364CD9-1DE6-40A1-A43D-E0F1780B2C99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF364CD9-1DE6-40A1-A43D-E0F1780B2C99}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -57,6 +63,7 @@ Global
 		{97190B88-183F-480D-B989-A2E8DCE5E1A5} = {6B300D84-0FC4-4523-BC2D-815A6D00A7C0}
 		{9B77BB36-B7A1-43F3-9F83-0B6007005DF8} = {97CE87BB-215C-4BB5-9E89-42C22892A5E4}
 		{CD814A4A-6E01-4A4B-971D-1498C0A6148C} = {97CE87BB-215C-4BB5-9E89-42C22892A5E4}
+		{BF364CD9-1DE6-40A1-A43D-E0F1780B2C99} = {97CE87BB-215C-4BB5-9E89-42C22892A5E4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8382BB81-21D4-41D9-9067-ED94C4B2489F}

@@ -4,7 +4,6 @@ using Newtonsoft.Json;
 using System.IO;
 using System.Linq;
 using FileServer.Common.Model;
-using System.Configuration;
 using log4net;
 using System.Reflection;
 using FileServer.Infrstructure.Repository_DAO_.Manager;

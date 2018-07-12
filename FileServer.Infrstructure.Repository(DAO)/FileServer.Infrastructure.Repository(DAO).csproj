@@ -66,9 +66,14 @@
   <ItemGroup>
     <Compile Include="Manager\ExceptionManager.cs" />
     <Compile Include="Manager\FileManager.cs" />
+    <Compile Include="Manager\ScriptManager.cs" />
     <Compile Include="Repositories\AlumnoRepository.cs" />
     <Compile Include="Interfaces\IAlumnoRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RepositoryPaternEjemplo\EntityModel.cs" />
+    <Compile Include="RepositoryPaternEjemplo\GenericRepository.cs" />
+    <Compile Include="RepositoryPaternEjemplo\Student.cs" />
+    <Compile Include="RepositoryPaternEjemplo\StudentRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="log4net.config">
