@@ -66,6 +66,8 @@
   <ItemGroup>
     <Compile Include="Manager\ExceptionManager.cs" />
     <Compile Include="Manager\FileManager.cs" />
+    <Compile Include="Interfaces\FileManagerAbstract.cs" />
+    <Compile Include="Manager\FileManagerAbstract-JSON.cs" />
     <Compile Include="Manager\ScriptManager.cs" />
     <Compile Include="Repositories\AlumnoRepository.cs" />
     <Compile Include="Interfaces\IAlumnoRepository.cs" />

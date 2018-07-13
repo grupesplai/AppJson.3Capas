@@ -8,6 +8,8 @@ namespace FileServer.Infrstructure.Repository_DAO_.RepositoryPaternEjemplo
 {
     public class StudentRepository : GenericRepository<Student>
     {
+        public StudentRepository() { }
+
         public new Student Insert(Student student)
         {
             student.Age = CalculateAge(student.Birthday);

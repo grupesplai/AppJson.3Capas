@@ -9,16 +9,15 @@ Function Mostrar-MensajeCuadroDialogo {
     )
     return [System.Windows.Forms.MessageBox]::Show($Mensaje, $Titulo, $Botones, $Icono)
 }
-if (Test-Path 'env:VUELING_HOME3') 
+if (Test-Path 'env:VUELING_HOME') 
 { 
     "Variable de entorno VUELING_HOME ya existente:"
     Get-Childitem env:VUELING_HOME
 } 
 else 
 {
-    [Environment]::SetEnvironmentVariable('VUELING_HOME3', 'C:\Users\G1\Documents', 'User')
-    "Nueva variable de entorno VUELING_HOME3 creada correctamente"
-    Mostrar-MensajeCuadroDialogo -Mensaje "Ha finalizado correctamente el proceso" -Titulo "Información" -Botones OK -Icono Information
+    [Environment]::SetEnvironmentVariable('VUELING_HOME', 'C:\Users\G1\Documents', 'User')
+    Mostrar-MensajeCuadroDialogo -Mensaje "Nueva variable de entorno VUELING_HOME creada correctamente" -Titulo "Información" -Botones OK -Icono Information
 }
 
 

@@ -10,5 +10,10 @@ namespace FileServer.Infrstructure.Repository_DAO_.RepositoryPaternEjemplo
     {
         public int Age { get; set; }
         public DateTime Birthday { get; set; }
+
+        public Student(DateTime birthday)
+        {
+            Birthday = birthday;
+        }
     }
 }

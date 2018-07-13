@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TestProfile xmlns="http://www.specflow.org/schemas/plus/TestProfile/1.5">
-  <Settings projectName="FileServer.Infrastructure.Repository(DAO).Behavior.Tests" projectId="{bf364cd9-1de6-40a1-a43d-e0f1780b2c99}" />
+  <Settings projectName="StudentRepository.Behavior.Test" projectId="{bac69a2d-6f84-4f5d-8299-3fcfdf441eee}" />
   <Execution stopAfterFailures="3" testThreadCount="1" testSchedulingMode="Sequential" />
   <!-- For collecting by a SpecRun server update and enable the following element. For using the 
       collected statistics, set testSchedulingMode="Adaptive" attribute on the <Execution> element.
     <Server serverUrl="http://specrunserver:6365" publishResults="true" />
   -->
   <TestAssemblyPaths>
-    <TestAssemblyPath>FileServer.Infrastructure.Repository(DAO).Behavior.Tests.dll</TestAssemblyPath>
+    <TestAssemblyPath>StudentRepository.Behavior.Test.dll</TestAssemblyPath>
   </TestAssemblyPaths>
   <DeploymentTransformation>
     <Steps>

@@ -26,21 +26,13 @@ namespace FileServer.Infrastructure.Repository_DAO_
             try
             {
                 log.Debug("Agregando alumno al fichero con ruta: " + path);
-                List<Alumno>listaAlumno = FileManager.FileExists(alumno, path);
+                List<Alumno> listaAlumno = FileManager.FileExists(alumno, path);
                 string alumJson = JsonConvert.SerializeObject(listaAlumno, Formatting.Indented);
                 //List<Alumno> listaAlumnos = JsonConvert.DeserializeObject<List<Alumno>>(File.ReadAllText(path));
                 using (StreamWriter sw = File.CreateText(path))
                     sw.WriteLine(alumJson);
             }
             catch (JsonException e)
-            {
-                ExceptionManager.ExceptionCaption(e);
-            }
-            catch (PathTooLongException e)
-            {
-                ExceptionManager.ExceptionCaption(e);
-            }
-            catch (DirectoryNotFoundException e)
             {
                 ExceptionManager.ExceptionCaption(e);
             }
