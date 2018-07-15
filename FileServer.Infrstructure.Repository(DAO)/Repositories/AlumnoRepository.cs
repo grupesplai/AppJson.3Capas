@@ -34,7 +34,7 @@ namespace FileServer.Infrastructure.Repository_DAO_
             }
             catch (JsonException e)
             {
-                ExceptionManager.ExceptionCaption(e);
+                VuelingException.VuelingException(e);
             }
             return alumno;
         }

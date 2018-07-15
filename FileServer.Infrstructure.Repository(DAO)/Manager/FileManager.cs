@@ -31,8 +31,7 @@ namespace FileServer.Infrstructure.Repository_DAO_
                 }
                 log.Debug("Ruta escogida por el usuario: '" + path + "'");
             }
-            catch (ArgumentException e){ ExceptionManager.ExceptionCaption(e);}
-            catch (ConfigurationErrorsException e) {ExceptionManager.ExceptionCaption(e);}
+            catch (VuelingException e){ throw e;}
             return path;
         }
 
@@ -55,9 +54,9 @@ namespace FileServer.Infrstructure.Repository_DAO_
                 }
                 log.Debug("Extensión elegida por usuario: '" + extensionSelected + "'");
             }
-            catch(ConfigurationErrorsException e)
+            catch(VuelingException e)
             {
-                ExceptionManager.ExceptionCaption(e);
+                throw e;
             }
             return extensionSelected;
         }
@@ -90,8 +89,7 @@ namespace FileServer.Infrstructure.Repository_DAO_
                     listaAlumno = new List<Alumno> { alumno };
                 }
             }
-            catch(OutOfMemoryException e) { ExceptionManager.ExceptionCaption(e); }
-            catch (FileNotFoundException e) { ExceptionManager.ExceptionCaption(e); }
+            catch(VuelingException e) { throw e; }
             return listaAlumno;
         }
     }

@@ -3,13 +3,15 @@ using System;
 using System.Reflection;
 namespace FileServer.Infrstructure.Repository_DAO_.Manager
 {
-    class ExceptionManager
+    class VuelingException : Exception
     {
         private static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
-        public static void ExceptionCaption(Exception excepcion)
+
+        public VuelingException(string message, Exception inner)
+            : base(message, inner)
         {
-            log.Error("Ha ocurrido un problema al añadir el alumno: " + excepcion.Message);
-            throw excepcion;
+            log.Error("Ha ocurrido un problema al añadir el alumno: " + message.ToString());
+            log.Error(inner.ToString());
         }
     }
 }
